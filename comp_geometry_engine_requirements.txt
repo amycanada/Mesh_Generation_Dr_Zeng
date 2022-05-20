@@ -1,0 +1,98 @@
+Requirements for computational geometry engine:
+- point
+- edge
+- line
+- plane
+- polygon
+- circle, sector, arc
+
+functionality:
+- angle between lines, edges
+- intersection between point and line/edge
+- intersection between two lines
+- intersection between circle and line/edge
+- sector angle
+- speed
+- 3D for future work
+
+Computational geometry engines:
+1. Scikit-geometry
+    • Advantages:
+        ◦ easy to use
+        ◦ has support for 3D point, 3D lines for future work
+        ◦ based on a mature C++ library (CGAL)
+    • Disadvantage:
+        ◦ limited documentation and examples
+    • Types:
+        ◦ 2D: Point2,Segment2,Line2,Circle2,Polygon
+            ▪ points, lines: intersection
+            ▪ bounding box
+            ▪ polygon: 
+                • difference, union, intersection, complement
+                • convex hull
+                • visibility from different positions inside arrangements
+            ▪ largest rectangle
+            ▪ Voronoi diagrams
+            ▪ drawing function to visualize
+                • simple to use, but cannot draw a point inside a polygon
+        ◦ 3D: Point3,Line3,Plane3,Polyhedron3
+2. Sympy: used for math
+    • Advantages:
+        ◦ Good amount of documentation and examples
+    • Disadvantage:
+        ◦ Type returned not always compatible with numpy, need to manually convert results of angle_between, etc....
+    • Types:
+        ◦ 2D: Point, Line, Segment, Ray, Ellipse, Circle, Polygon, Triangle
+            ▪ intersection, convex_hull
+        ◦ Nice math plotting: 2D and 3D
+3. arcgis_geometry: used for Geographical Information System Mapping
+    • Advantages:
+        ◦ compatibility of types with NumPy
+        ◦ can save and read from SVG format
+        ◦ auto-complete: fills the gap between polygons and new polygons
+        ◦ offset function 
+        ◦ contains function
+    • Disadvantage:
+        ◦ need to manually draw polygons (can use matplotlib)
+    • Types:
+        ◦ geometry:
+            ▪ Point
+            ▪ Multipoint (array of points)
+            ▪ Polyline (array of paths | paths: array of points)
+            ▪ Polygon (array of rings | each ring: array of points, where the first point is the same as the last point)
+            ▪ Envelope: rectangle containing 
+            ▪ Convex Hull
+            ▪ intersect, union, difference
+4.  Shapely: for GIS
+    • Advantages:
+        ◦ Polygons with holes manipulation
+        ◦ LinearRings can be used to create partial polygons, then adding lines to form the polygon
+        ◦ Intersection can return all intersecting geometries 
+    • Disadvantage:
+        ◦ No angle calculations
+    • Types:
+        ◦ Point
+        ◦ Multipoint
+        ◦ LinearRings (simple, complex)
+            ▪ .is_ccw
+            ▪ .is_ring
+            ▪ .is_simple
+            ▪ .contains()
+            ▪ .intersects()
+            ▪ .within() (inverse of .contains())
+        ◦ Polygons
+        ◦ MultilineString (simple, complex)
+5. QGIS: for GIS    
+    • Advantages:
+        ◦ Desktop tool with GUI
+        ◦ Includes Python console
+        ◦ Support for 1D,2D and 3D mesh 
+        ◦ Extensive documentation
+        ◦ Visualization of data
+        ◦ Support for connection with databases or from file
+    • Disadvantage:
+        ◦ No angle calculations
+    • Types:        
+	  ◦ Support for 1D,2D and 3D mesh 
+        ◦ Extensive documentation
+        ◦ Visualization of data
